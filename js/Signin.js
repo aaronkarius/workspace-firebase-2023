@@ -44,7 +44,7 @@ $("#submit").click(function (e) {
 
 // add  a google login choice here
 $("#google").click(e => {
-    // e.preventDefault();
+    e.preventDefault();
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase
         .auth()
@@ -54,7 +54,6 @@ $("#google").click(e => {
             console.log("sign in through google", user);
         })
         .catch(error => {
-            let test = error;
             console.log(error);
         });
 });
