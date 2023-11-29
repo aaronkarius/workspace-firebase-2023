@@ -54,6 +54,7 @@ $("#google").click(e => {
             console.log("sign in through google", user);
         })
         .catch(error => {
+            let test = error;
             console.log(error);
         });
 });
