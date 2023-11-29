@@ -48,7 +48,7 @@ $("#google").click(e => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase
         .auth()
-        .signInWithRedirect(provider)
+        .signInWithPopup(provider)
         .then(result => {
             var user = result.user;
             console.log("sign in through google", user);
