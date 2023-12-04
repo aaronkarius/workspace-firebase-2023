@@ -14,8 +14,8 @@ $("#submit").click(function (e) {
     e.preventDefault();
     // get the user name and password from form
     // You need to change this.
-    var email = "akarius12@gmail.com";
-    var password = "abc123";
+    var email = $("#login").val();
+    var password = $("#pwd").val();
 
     firebase
         .auth()
@@ -23,22 +23,14 @@ $("#submit").click(function (e) {
         .then(success => {
             // Signed in
             // ...
-            console.log("login in");
+            alert("logged in");
             let user = firebase.auth().currentUser;
-
+            console.log(user);
+            window.location.href = "Surveyresult.html";
             //user.updateProfile({ displayName: "Not sure" });
-            if (user != null) {
-                name = user.displayName;
-                email = user.email;
-                photoUrl = user.photoURL;
-                emailVerified = user.emailVerified;
-                console.log(name, email, emailVerified);
-            }
         })
         .catch(error => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorMessage);
+            alert(error.message);
         });
 });
 
@@ -51,9 +43,10 @@ $("#google").click(e => {
         .signInWithPopup(provider)
         .then(result => {
             var user = result.user;
-            console.log("sign in through google", user);
+            alert("signed in through google");
+            console.log(user);
         })
         .catch(error => {
-            console.log(error);
+            alert(error.message);
         });
 });
